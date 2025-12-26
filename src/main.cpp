@@ -56,5 +56,14 @@ int main(int argc, char* argv[])
         }
     }
 
+    else if(command == "list")
+    {
+        shoppingList.listItems();
+    }
+    else
+    {
+        cout << "Comanda necunoscuta." << endl;
+    }
+
     return 0;
 }
