@@ -25,15 +25,43 @@ int main(int argc, char* argv[])
             return 1; 
         }
 
-        string name = argv[2];
-        int quantity = stoi(argv[3]);
-        double price = stod(argv[4]);
+        string name;
+
+        int quantity;
+        double price;
+
+        try
+        {
+            quantity = stoi(argv[3]);
+            price = stod(argv[4]);
+        } catch(...){
+            cout << "Eroare: cantitatea si pretul trebuie sa fie numere." << endl;
+            return 1;
+        }
+    
+        if(quantity <= 0)
+        {
+            cout << "Eroare: cantitatea trebuie sa fie mai mare decat 0." << endl;
+            return 1;
+        }
+
+        if(price < 0)
+        {
+            cout << "Eroare: pretul nu poate fi negativ." << endl;
+            return 1;
+        }
+
         string category = argv[5];
 
         Item item(name, quantity, price, category);
         shoppingList.addItem(item);
 
-        cout << "Artigol adaugat: " << name << endl;
+        cout << "Artigol adaugat: " << name 
+             << " (cantitate: " << quantity
+             << ", pret unitar: " << price
+             << ", total: " << item.getTotalPrice()
+             << ", categorie: " << category << ")"
+             << endl;
     }
     else if(command == "remove")
     {
