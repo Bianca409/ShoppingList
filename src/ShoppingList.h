@@ -15,6 +15,9 @@ public:
     bool removeItemByName(const string& name);
     void listItems() const;
 
+    void loadFromFile(const string& filename);
+    void saveToFile(const string& filename) const;
+
 };
 
 #endif

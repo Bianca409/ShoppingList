@@ -1,5 +1,56 @@
 #include "ShoppingList.h"
 #include <iostream>
+#include <fstream>
+#include "json.hpp"
+
+using json = nlohmann::json;
+
+void ShoppingList::loadFromFile(const string& filename)
+{
+    ifstream file(filename);
+    if(!file.is_open())
+    {
+        return;
+    }
+
+    json j;
+    file >> j;
+
+    items.clear();
+
+    for(const auto& elem : j)
+    {
+        string name = elem["name"];
+        int quantity = elem["quantity"];
+        double price = elem["price"];
+        string category = elem["category"];
+
+        items.emplace_back(name, quantity, price, category);
+    }
+}
+
+void ShoppingList::saveToFile(const string& filename) const
+{
+    json j = json::array();
+
+    for(const auto& item : items)
+    {
+        j.push_back
+        (
+            {
+                {"name", item.getName()},
+                {"quantity", item.getQuantity()},
+                {"price", item.getPrice()},
+                {"category", item.getCategory()}
+
+            }
+        );
+    }
+
+    ofstream file(filename);
+    file << j.dump(4);
+}
+
 
 void ShoppingList::addItem(const Item& item)
 {

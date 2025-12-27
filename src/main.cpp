@@ -9,6 +9,9 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     ShoppingList shoppingList;
+
+    shoppingList.loadFromFile("data/shopping_list.json");
+
     if(argc < 2)
     {
         cout << "Eroare: Nu a fost introdusa nici o camanda." << endl;
@@ -56,6 +59,8 @@ int main(int argc, char* argv[])
         Item item(name, quantity, price, category);
         shoppingList.addItem(item);
 
+        shoppingList.saveToFile("data/shopping_list.json");
+
         cout << "Artigol adaugat: " << name 
              << " (cantitate: " << quantity
              << ", pret unitar: " << price
@@ -76,6 +81,7 @@ int main(int argc, char* argv[])
 
         if(removed)
         {
+            shoppingList.saveToFile("data/shopping_list.json");
             cout << "Articol sters: " << name << endl;
         } 
         else
