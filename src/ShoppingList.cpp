@@ -2,8 +2,46 @@
 #include <iostream>
 #include <fstream>
 #include "json.hpp"
+#include <algorithm>
 
 using json = nlohmann::json;
+
+void ShoppingList::addItem(const Item& item)
+{
+    items.push_back(item);
+}
+
+bool ShoppingList::removeItemByName(const string& name)
+{
+    for(auto it = items.begin(); it != items.end(); ++it)
+    {
+        if(it->getName() == name)
+        {
+            items.erase(it);
+            return true;
+        }
+    }
+    return false;
+}
+
+void ShoppingList::listItems() const
+{
+    if(items.empty())
+    {
+        cout << "Lista de cumparaturi este goala." << endl;
+        return;
+    }
+
+    for(const auto& item : items)
+    {
+        cout << item.getName()
+             << " Cantitate: " << item.getQuantity()
+             << " Pret unitar: " << item.getPrice()
+             << " Total: " << item.getTotalPrice()
+             << " Categorie: " << item.getCategory()
+             << endl;
+    }
+}
 
 void ShoppingList::loadFromFile(const string& filename)
 {
@@ -51,34 +89,14 @@ void ShoppingList::saveToFile(const string& filename) const
     file << j.dump(4);
 }
 
-
-void ShoppingList::addItem(const Item& item)
+void ShoppingList::listItemsSortedByName() const
 {
-    items.push_back(item);
-}
+    vector<Item> sortedItems = items;
 
-bool ShoppingList::removeItemByName(const string& name)
-{
-    for(auto it = items.begin(); it != items.end(); ++it)
-    {
-        if(it->getName() == name)
-        {
-            items.erase(it);
-            return true;
-        }
-    }
-    return false;
-}
+    sort(sortedItems.begin(), sortedItems.end(), [](const Item& a, const Item& b)
+    { return a.getName() < b.getName(); });
 
-void ShoppingList::listItems() const
-{
-    if(items.empty())
-    {
-        cout << "Lista de cumparaturi este goala." << endl;
-        return;
-    }
-
-    for(const auto& item : items)
+    for(const auto& item : sortedItems)
     {
         cout << item.getName()
              << " Cantitate: " << item.getQuantity()
@@ -86,5 +104,65 @@ void ShoppingList::listItems() const
              << " Total: " << item.getTotalPrice()
              << " Categorie: " << item.getCategory()
              << endl;
+    }
+}
+
+void ShoppingList::listItemsSortedByPrice() const 
+{
+    vector<Item> sortedItems = items;
+
+    sort(sortedItems.begin(), sortedItems.end(), [](const Item& a, const Item& b)
+    { return a.getPrice() < b.getPrice(); });
+
+    for(const auto& item : sortedItems)
+    {
+        cout << item.getName()
+             << " Cantitate: " << item.getQuantity()
+             << " Pret unitar: " << item.getPrice()
+             << " Total: " << item.getTotalPrice()
+             << " Categorie: " << item.getCategory()
+             << endl;
+    }
+
+}
+
+void ShoppingList::listItemsSortedByCategory() const
+{
+    vector<Item> sortedItems = items;
+
+    sort(sortedItems.begin(), sortedItems.end(), [](const Item& a, const Item& b)
+    { return a.getCategory() < b.getCategory(); });
+
+    for(const auto& item : sortedItems)
+    {
+        cout << item.getName()
+             << " Cantitate: " << item.getQuantity()
+             << " Pret unitar: " << item.getPrice()
+             << " Total: " << item.getTotalPrice()
+             << " Categorie: " << item.getCategory()
+             << endl;
+    }
+} 
+
+void ShoppingList::listItemsSortedByCategory(const string& category) const
+{
+    bool found = false;
+
+    for(const auto& item : items)
+    {
+        if(item.getCategory() == category)
+        {
+            found = true;
+            cout << item.getName()
+                << " Cantitate: " << item.getQuantity()
+                << " Pret unitar: " << item.getPrice()
+                << " Total: " << item.getTotalPrice()
+                << endl;
+        }
+    }
+
+    if(!found)
+    {
+        cout << "Nu exista articole in categoria: " << category << endl;
     }
 }

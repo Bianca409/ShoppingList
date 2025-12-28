@@ -18,6 +18,12 @@ public:
     void loadFromFile(const string& filename);
     void saveToFile(const string& filename) const;
 
+    void listItemsSortedByName() const;
+    void listItemsSortedByPrice() const;
+    void listItemsSortedByCategory() const;
+
+    void listItemsSortedByCategory(const string& category) const;
+
 };
 
 #endif
