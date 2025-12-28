@@ -22,7 +22,7 @@ public:
     void listItemsSortedByPrice() const;
     void listItemsSortedByCategory() const;
 
-    void listItemsSortedByCategory(const string& category) const;
+    void listItemsByCategory(const string& category) const;
 
 };
 
