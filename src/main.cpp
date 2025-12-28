@@ -164,6 +164,21 @@ int main(int argc, char *argv[])
         shoppingList.exportToCSV(filename);
     }
 
+    else if (command == "help")
+    {
+        cout << "== Ajutor - Shopping List ==\n";
+        cout << "Comenzi disponibile:\n";
+        cout << " add <nume> <cantitate> <pret> <categorie>\n";
+        cout << " remove <nume>\n";
+        cout << " list\n";
+        cout << " list --sort name|price|category\n";
+        cout << " search --category <categorie>\n";
+        cout << " total\n";
+        cout << " export <fisier.csv>\n";
+        cout << " help\n";
+        cout << "Exemplu: ./shopping_list add mere 5 2.5 fructe\n";
+    }
+
     else
     {
         cout << "Comanda necunoscuta." << endl;
