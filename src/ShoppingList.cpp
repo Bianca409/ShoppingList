@@ -180,3 +180,54 @@ void ShoppingList::listItemsByCategory(const string &category) const
         cout << "Nu exista articole in categoria: " << category << endl;
     }
 }
+
+double ShoppingList::getTotalCost() const
+{
+    double total = 0.0;
+
+    for (const auto &item : items)
+    {
+        total += item.getTotalPrice();
+    }
+
+    return total;
+}
+
+void ShoppingList::printSubtotalByCategory() const
+{
+    map<string, double> subtotals;
+
+    for (const auto &item : items)
+    {
+        subtotals[item.getCategory()] += item.getTotalPrice();
+    }
+
+    for (const auto &pair : subtotals)
+    {
+        cout << pair.first << ": " << pair.second << " RON" << endl;
+    }
+}
+
+void ShoppingList::exportToCSV(const string &filename) const
+{
+    ofstream file(filename);
+
+    if (!file.is_open())
+    {
+        cout << "Eroare la deschiderea fisierului CSV." << endl;
+        return;
+    }
+
+    file << "name,quantity,price,category,total\n";
+
+    for (const auto &item : items)
+    {
+        file << item.getName() << ","
+             << item.getQuantity() << ","
+             << item.getPrice() << ","
+             << item.getCategory() << ","
+             << item.getTotalPrice() << "\n";
+    }
+    
+    cout << "Lista exportata in " << filename << endl;
+}

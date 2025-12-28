@@ -140,6 +140,30 @@ int main(int argc, char *argv[])
         string category = argv[3];
         shoppingList.listItemsByCategory(category);
     }
+
+    else if (command == "total")
+    {
+        double total = shoppingList.getTotalCost();
+        cout << "Cost total: " << total << " RON" << endl;
+    }
+
+    else if (command == "subtotal")
+    {
+        shoppingList.printSubtotalByCategory();
+    }
+
+    else if (command == "export")
+    {
+        if (argc != 3)
+        {
+            cout << "Utilizare: export <fisier.csv>" << endl;
+            return 1;
+        }
+
+        string filename = argv[2];
+        shoppingList.exportToCSV(filename);
+    }
+
     else
     {
         cout << "Comanda necunoscuta." << endl;
