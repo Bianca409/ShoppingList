@@ -15,7 +15,7 @@ Aceasta aplicatie CLI permite gestionarea unei liste de cumparaturi. Utilizatoru
  ## Compilare
  **Proiectul se compileaza folosind gcc:**   
  ```bash
- gcc -std=c++17 src/*.cpp -o shopping_list
+ gcc -std=c++17 src/main.cpp src/Item.cpp src/ShoppingList.cpp -lstdc++ -o shopping_list.exe
  ```
 
  ## Rulare
