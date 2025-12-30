@@ -6,6 +6,7 @@
 
 using namespace std;
 
+//Proceseaza comenzile din linia de comanda si apeleaza functionalitatile corespunzatoare
 int main(int argc, char *argv[])
 {
     ShoppingList shoppingList;
@@ -38,7 +39,7 @@ int main(int argc, char *argv[])
             quantity = stoi(argv[3]);
             price = stod(argv[4]);
         }
-        catch (...)
+        catch (...) //prinde orice exceptie
         {
             cout << "Eroare: cantitatea si pretul trebuie sa fie numere." << endl;
             return 1;
