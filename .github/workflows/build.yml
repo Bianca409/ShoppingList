@@ -1,0 +1,22 @@
+name: Build and Docker Image
+
+on:
+    push:
+        branches: [ "main" ]
+    pull_request:
+        branches: [ "main" ]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+
+        - name: Build Docker image
+          run: docker build -t shoppinglist .
+
+        -  name: Test Docker image
+           run: docker run shoppinglist help
+
