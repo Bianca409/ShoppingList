@@ -175,6 +175,7 @@ int main(int argc, char *argv[])
         cout << " list --sort name|price|category\n";
         cout << " search --category <categorie>\n";
         cout << " total\n";
+        cout << "subtotal\n";
         cout << " export <fisier.csv>\n";
         cout << " help\n";
         cout << "Exemplu: ./shopping_list add mere 5 2.5 fructe\n";

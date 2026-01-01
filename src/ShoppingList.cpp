@@ -34,11 +34,11 @@ void ShoppingList::listItems() const
 
     for (const auto &item : items)
     {
-        cout << item.getName()
-             << " Cantitate: " << item.getQuantity()
-             << " Pret unitar: " << item.getPrice()
-             << " Total: " << item.getTotalPrice()
-             << " Categorie: " << item.getCategory()
+        cout << "Nume: " << item.getName()
+             << ", Cantitate: " << item.getQuantity()
+             << ", Pret unitar: " << item.getPrice()
+             << ", Total: " << item.getTotalPrice()
+             << ", Categorie: " << item.getCategory()
              << endl;
     }
 }
@@ -101,11 +101,11 @@ void ShoppingList::listItemsSortedByName() const
 
     for (const auto &item : sortedItems)
     {
-        cout << item.getName()
-             << " Cantitate: " << item.getQuantity()
-             << " Pret unitar: " << item.getPrice()
-             << " Total: " << item.getTotalPrice()
-             << " Categorie: " << item.getCategory()
+        cout << "Nume: " << item.getName()
+             << ", Cantitate: " << item.getQuantity()
+             << ", Pret unitar: " << item.getPrice()
+             << ", Total: " << item.getTotalPrice()
+             << ", Categorie: " << item.getCategory()
              << endl;
     }
 }
@@ -125,11 +125,11 @@ void ShoppingList::listItemsSortedByPrice() const
 
     for (const auto &item : sortedItems)
     {
-        cout << item.getName()
-             << " Cantitate: " << item.getQuantity()
-             << " Pret unitar: " << item.getPrice()
-             << " Total: " << item.getTotalPrice()
-             << " Categorie: " << item.getCategory()
+        cout << "Nume: " << item.getName()
+             << ", Cantitate: " << item.getQuantity()
+             << ", Pret unitar: " << item.getPrice()
+             << ", Total: " << item.getTotalPrice()
+             << ", Categorie: " << item.getCategory()
              << endl;
     }
 }
@@ -149,11 +149,11 @@ void ShoppingList::listItemsSortedByCategory() const
 
     for (const auto &item : sortedItems)
     {
-        cout << item.getName()
-             << " Cantitate: " << item.getQuantity()
-             << " Pret unitar: " << item.getPrice()
-             << " Total: " << item.getTotalPrice()
-             << " Categorie: " << item.getCategory()
+        cout << "Nume: " << item.getName()
+             << ", Cantitate: " << item.getQuantity()
+             << ", Pret unitar: " << item.getPrice()
+             << ", Total: " << item.getTotalPrice()
+             << ", Categorie: " << item.getCategory()
              << endl;
     }
 }
@@ -167,10 +167,10 @@ void ShoppingList::listItemsByCategory(const string &category) const
         if (item.getCategory() == category)
         {
             found = true;
-            cout << item.getName()
-                 << " Cantitate: " << item.getQuantity()
-                 << " Pret unitar: " << item.getPrice()
-                 << " Total: " << item.getTotalPrice()
+            cout << "Nume: " << item.getName()
+                 << ", Cantitate: " << item.getQuantity()
+                 << ", Pret unitar: " << item.getPrice()
+                 << ", Total: " << item.getTotalPrice()
                  << endl;
         }
     }
