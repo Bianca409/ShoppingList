@@ -123,6 +123,7 @@ lactate: 10.5 RON
 [x] Meniu de ajutor (help)   
 
 ## Structura proiectului
+```bash
 ShoppingList/   
 ├── src/   
 │   ├── main.cpp - logica principala CLI    
@@ -134,7 +135,7 @@ ShoppingList/
 │   └── build.yml - CI/CD   
 ├── Dockerfile   
 └── README.md   
-
+```
 ## Decizie de design
 Articolele sunt stocate intr-un vector<Item> deoarece numarul lor este variabil.  
 Sortarea este realizata folosind std::sort cu functii lambda.  
